@@ -1,0 +1,37 @@
+.container {
+	margin-bottom: 8px;
+	display: flex;
+}
+
+.input {
+	flex: auto;
+	width: 100%;
+	border: none;
+	background-color: transparent;
+	border-radius: 5px;
+	padding-left: 0.5rem;
+	margin-right: 0.5rem;
+	border: 1px solid var(--color-primary);
+}
+
+.input:hover {
+	outline: transparent;
+	border: 1px solid var(--color-primary-hover);
+}
+
+.input:focus {
+	outline: transparent;
+	border: 1px solid var(--color-primary-hover);
+}
+
+.input::placeholder {
+	color: var(--text-secondary);
+}
+
+.btn {
+	flex: none;
+	padding: 5px 15px;
+	border-radius: 5px;
+	color: white;
+	background-color: var(--color-primary);
+}

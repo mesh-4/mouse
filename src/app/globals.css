@@ -1,0 +1,82 @@
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+	color: var(--text-primary);
+	background-color: var(--page-bg);
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+	isolation: isolate;
+}
+
+button {
+	border: none;
+	box-shadow: none;
+}
+
+:root {
+	--page-bg: hsl(63, 60%, 98%);
+
+	--color-primary: #6f27d8;
+	--color-primary-hover: #a375e6;
+	--color-primary-active: #894edf;
+
+	--text-primary: hsl(0, 0%, 4.31%);
+	--text-secondary: hsl(0, 0%, 30%);
+
+	--font-xs: 8px;
+	--font-sm: 12px;
+	--font-md: 16px;
+	--font-lg: 20px;
+	--font-xl: 24px;
+	--font-xxl: 32px;
+}
+
+.dark {
+	--page-bg: hsl(280, 6%, 10%);
+
+	--text-primary: hsl(0, 0%, 95.29%);
+}
