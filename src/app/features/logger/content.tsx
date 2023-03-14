@@ -2,10 +2,14 @@
 
 import * as React from 'react'
 
+import { useStore } from '@/store'
+
 const LoggerContent = () => {
+	const currentSelector = useStore((state) => state.currentSelector)
+
 	return (
 		<div>
-			<div>test</div>
+			<div>{currentSelector}</div>
 		</div>
 	)
 }

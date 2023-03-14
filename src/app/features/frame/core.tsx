@@ -15,6 +15,7 @@ type FrameProps = {
 
 const Frame: React.FC<FrameProps> = ({ cssSelector }) => {
 	const url = useStore((state) => state.url)
+	const setCurrentSelector = useStore((state) => state.setCurrentSelector)
 
 	const { srcDoc, error, isLoading } = useProxySite(url)
 
@@ -64,13 +65,16 @@ const Frame: React.FC<FrameProps> = ({ cssSelector }) => {
 				element.addEventListener('click', (e) => {
 					e.preventDefault()
 
+					// remove previous selected elements
 					tempWindow?.document.querySelectorAll(`.${SELECTED_CLASS}`).forEach((ele) => {
 						ele.classList.remove(SELECTED_CLASS)
 					})
 
+					setCurrentSelector(selector)
 					elements.forEach((ele) => {
-						if (!ele.className.includes(SELECTED_CLASS)) {
-							ele.classList.add(SELECTED_CLASS)
+						const child = ele.firstElementChild
+						if (child && !child.className.includes(SELECTED_CLASS)) {
+							child.classList.add(SELECTED_CLASS)
 						}
 					})
 				})
