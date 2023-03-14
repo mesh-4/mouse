@@ -12,7 +12,6 @@
     "@types/node": "18.15.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "body-parser": "^1.20.2",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -24,7 +23,6 @@
     "zustand": "^4.3.6"
   },
   "devDependencies": {
-    "@types/body-parser": "^1.19.2",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window": "^1.8.5",
     "prettier": "^2.8.4"
