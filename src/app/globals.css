@@ -58,17 +58,26 @@ button {
 }
 
 :root {
-	--page-bg: hsl(63, 60%, 98%);
+	--page-bg: white;
 
-	--color-primary: #6f27d8;
-	--color-primary-hover: #a375e6;
-	--color-primary-active: #894edf;
+	--purple-1: hsl(280, 65%, 99.4%);
+	--purple-2: hsl(276, 100%, 99%);
+	--purple-3: hsl(276, 83.1%, 97%);
+	--purple-4: hsl(275, 76.4%, 94.7%);
+	--purple-5: hsl(275, 70.8%, 91.8%);
+	--purple-6: hsl(274, 65.4%, 87.8%);
+	--purple-7: hsl(273, 61%, 81.7%);
+	--purple-8: hsl(272, 60%, 73.5%);
+	--purple-9: hsl(272, 51%, 54%);
+	--purple-10: hsl(272, 46.8%, 50.3%);
+	--purple-11: hsl(272, 50%, 45.8%);
+	--purple-12: hsl(272, 66%, 16%);
 
-	--text-primary: hsl(0, 0%, 4.31%);
-	--text-secondary: hsl(0, 0%, 30%);
+	--text-primary: rgb(23, 23, 23);
+	--text-secondary: rgb(111, 111, 111);
 
-	--font-xs: 8px;
-	--font-sm: 12px;
+	--font-xs: 10px;
+	--font-sm: 14px;
 	--font-md: 16px;
 	--font-lg: 20px;
 	--font-xl: 24px;
@@ -78,5 +87,6 @@ button {
 .dark {
 	--page-bg: hsl(280, 6%, 10%);
 
-	--text-primary: hsl(0, 0%, 95.29%);
+	--text-primary: rgb(237, 237, 237);
+	--text-secondary: rgb(160, 160, 160);
 }

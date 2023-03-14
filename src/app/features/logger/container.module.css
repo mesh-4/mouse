@@ -1,19 +1,14 @@
-.logger__container {
+.container {
 	position: relative;
 	width: 100%;
 	height: 50vh;
 	display: flex;
 	flex-direction: column;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.38s ease-in-out;
 }
 
-.logger__title {
-	flex: none;
-	font-size: var(--font-lg);
-	font-weight: 600;
-	margin-bottom: 16px;
-}
-
-.logger__content {
-	flex: auto;
-	height: 100%;
+.container[data-show='true'] {
+	opacity: 1;
 }

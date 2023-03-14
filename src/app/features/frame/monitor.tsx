@@ -1,21 +1,18 @@
+'use client'
+
 import * as React from 'react'
+
+import { useStore } from '@/store'
 
 import styles from './monitor.module.css'
 
 const FramerMonitor = ({ children }: React.PropsWithChildren) => {
+	const url = useStore((state) => state.url)
+
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-show={url ? 'true' : 'false'}>
 			<div className={styles['container--spacer']} />
-			<div
-				style={{
-					position: 'absolute',
-					top: 0,
-					left: 0,
-					bottom: 0,
-					right: 0,
-				}}>
-				{children}
-			</div>
+			<div className={styles['container--content']}>{children}</div>
 		</div>
 	)
 }

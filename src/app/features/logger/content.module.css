@@ -1,0 +1,18 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+.title {
+	flex: none;
+	font-size: var(--font-lg);
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.content {
+	flex: auto;
+	height: 100%;
+}

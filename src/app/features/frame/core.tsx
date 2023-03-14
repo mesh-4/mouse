@@ -107,6 +107,10 @@ const Frame: React.FC<FrameProps> = ({ cssSelector }) => {
 		}
 	}
 
+	if (!url) {
+		return null
+	}
+
 	if (isLoading) {
 		return <p>Loading</p>
 	}
