@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-import styles from "./container.module.css";
+import styles from './container.module.css'
 
 const LoggerContainer = ({ children }: React.PropsWithChildren) => {
 	return (
@@ -8,7 +8,7 @@ const LoggerContainer = ({ children }: React.PropsWithChildren) => {
 			<p className={styles.logger__title}>操作記錄</p>
 			<div className={styles.logger__content}>{children}</div>
 		</div>
-	);
-};
+	)
+}
 
-export default LoggerContainer;
+export default LoggerContainer
