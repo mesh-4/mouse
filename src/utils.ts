@@ -1,5 +1,3 @@
-import url from 'url'
-
 export const isNoHTML = (element: Element | null) => {
 	if (!element) return false
 	return element.tagName === 'HTML'
@@ -9,16 +7,6 @@ export const isSelectableElement = (element: Element | null) => {
 	if (!element) return false
 	const tagName = element.tagName.toLowerCase()
 	return tagName !== 'br' && tagName !== 'svg'
-}
-
-export const formatUrl = (input: string) => {
-	if (!input.endsWith('/')) input += '/'
-	return input
-}
-
-export const getOrigin = (input: string) => {
-	const { protocol, host } = url.parse(input)
-	return `${protocol}//${host}`
 }
 
 export const getClassFromElement = (element: Element): string => {
@@ -44,4 +32,8 @@ export const getNodePath = (node: Element): string => {
 	}
 	const nodeClass = node.getAttribute('class') ? `.${node.getAttribute('class')!.replace(/\s+/g, '.')}` : ''
 	return `${node.nodeName}${nodeClass}`
+}
+
+export const sleep = (ms: number) => {
+	return new Promise((resolve) => setTimeout(resolve, ms))
 }

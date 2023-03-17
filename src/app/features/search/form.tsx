@@ -7,14 +7,16 @@ import { useStore } from '@/store'
 
 import styles from './form.module.css'
 
-const SearchForm = () => {
-	const inputRef = React.useRef<HTMLInputElement>(null)
+type Props = {
+	url?: string
+}
 
-	const url = useStore((state) => state.url)
+const SearchForm: React.FC<Props> = ({ url = '' }) => {
+	const inputRef = React.useRef<HTMLInputElement>(null)
 	const setUrl = useStore((state) => state.setUrl)
 
 	React.useEffect(() => {
-		if (inputRef.current) {
+		if (url && inputRef.current) {
 			inputRef.current.value = url
 		}
 	}, [url])
@@ -37,11 +39,11 @@ const SearchForm = () => {
 				<input
 					ref={inputRef}
 					className={styles.input}
-					name="target"
 					type="url"
+					name="target"
+					placeholder="Enter site url"
 					required
 					pattern="^(https?):\/\/[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})(:\d{1,5})?(\/[^\s]*)?$"
-					placeholder="Enter site url"
 				/>
 				{url && (
 					<button type="button" className={styles['clear-btn']} aria-label="reset" onClick={handleReset}>
@@ -49,11 +51,13 @@ const SearchForm = () => {
 					</button>
 				)}
 			</div>
-			<button type="submit" className={styles.btn}>
+			<button type="submit" className="button primary">
 				Search
 			</button>
 		</form>
 	)
 }
+
+SearchForm.displayName = 'SearchForm'
 
 export default SearchForm

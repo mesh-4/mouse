@@ -16,3 +16,21 @@
 	flex: auto;
 	height: 100%;
 }
+
+.submitor {
+	flex: none;
+	margin-top: 16px;
+}
+
+.selector {
+	width: 100%;
+	padding: 4px;
+	height: 31px;
+	border-radius: 4px;
+	border: 1px solid var(--gray-6);
+	background-color: var(--gray-3);
+	font-size: var(--font-sm);
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

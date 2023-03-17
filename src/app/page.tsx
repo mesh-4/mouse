@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<main>
+		<main style={{ position: 'relative', height: '100vh', width: '100vw' }}>
 			<SearchContainer>
 				<SearchForm />
 			</SearchContainer>

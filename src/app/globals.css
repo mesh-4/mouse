@@ -73,6 +73,19 @@ button {
 	--purple-11: hsl(272, 50%, 45.8%);
 	--purple-12: hsl(272, 66%, 16%);
 
+	--gray-1: hsl(0, 0%, 99%);
+	--gray-2: hsl(0, 0%, 97.3%);
+	--gray-3: hsl(0, 0%, 95.1%);
+	--gray-4: hsl(0, 0%, 93%);
+	--gray-5: hsl(0, 0%, 90.9%);
+	--gray-6: hsl(0, 0%, 88.7%);
+	--gray-7: hsl(0, 0%, 85.8%);
+	--gray-8: hsl(0, 0%, 78%);
+	--gray-9: hsl(0, 0%, 56.1%);
+	--gray-10: hsl(0, 0%, 52.3%);
+	--gray-11: hsl(0, 0%, 43.5%);
+	--gray-12: hsl(0, 0%, 9%);
+
 	--text-primary: rgb(23, 23, 23);
 	--text-secondary: rgb(111, 111, 111);
 
@@ -89,4 +102,32 @@ button {
 
 	--text-primary: rgb(237, 237, 237);
 	--text-secondary: rgb(160, 160, 160);
+}
+
+.button {
+	cursor: pointer;
+	border-radius: 5px;
+	color: var(--text-primary);
+	font-size: var(--font-md);
+	padding: 5px 15px;
+	font-weight: 600;
+	text-align: center;
+	transition: all 0.2s ease-in-out;
+}
+.button:disabled {
+	cursor: default;
+	pointer-events: none;
+	background-color: var(--gray-9) !important;
+}
+
+.button.primary {
+	background-color: var(--purple-9);
+}
+.button.primary:hover {
+	background-color: var(--purple-10);
+}
+
+.button.size-sm {
+	font-size: var(--font-sm);
+	padding: 3px 10px;
 }

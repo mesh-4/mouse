@@ -4,7 +4,6 @@
 	height: 50vh;
 	display: flex;
 	flex-direction: column;
-	pointer-events: none;
 	opacity: 0;
 	transition: opacity 0.38s ease-in-out;
 }
