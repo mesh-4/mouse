@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Search from './features/search'
 import Frame from './features/frame'
 import Crawler from './features/crawler'
+import Footer from './features/aside/footer'
 
 export const metadata: Metadata = {
 	title: 'Mouse',
@@ -23,6 +24,7 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</main>
 	)
 }
