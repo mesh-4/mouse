@@ -9,11 +9,11 @@ import { PICKER_STYLES, HOVERED_CLASS, SELECTED_CLASS } from '@/constants'
 
 var tempWindow: Window | null = null
 
-type FrameProps = {
+type Props = {
 	cssSelector?: string
 }
 
-const Frame: React.FC<FrameProps> = ({ cssSelector }) => {
+const Frame = ({ cssSelector }: Props) => {
 	const url = useStore((state) => state.url)
 	const setCurrentSelector = useStore((state) => state.setCurrentSelector)
 

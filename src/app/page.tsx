@@ -1,15 +1,8 @@
 import type { Metadata } from 'next'
 
-import styles from './page.module.css'
-
-import SearchContainer from './features/search/container'
-import SearchForm from './features/search/form'
-
-import FramerMonitor from './features/frame/monitor'
-import FrameCore from './features/frame/core'
-
-import LoggerContainer from './features/logger/container'
-import LoggerContent from './features/logger/content'
+import Search from './features/search'
+import Frame from './features/frame'
+import Crawler from './features/crawler'
 
 export const metadata: Metadata = {
 	title: 'Mouse',
@@ -18,20 +11,16 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<main style={{ position: 'relative', height: '100vh', width: '100vw' }}>
-			<SearchContainer>
-				<SearchForm />
-			</SearchContainer>
-			<div className={styles.dashboard}>
-				<div className={styles.dashboard__frame}>
-					<FramerMonitor>
-						<FrameCore />
-					</FramerMonitor>
+		<main className="relative w-screen h-screen">
+			<Search />
+			<div className="flex py-[10vh] px-[2.5vw] w-full h-full">
+				<div className="flex-auto w-full mr-5 flex flex-col justify-center">
+					<Frame />
 				</div>
-				<div className={styles.dashboard__sidebar}>
-					<LoggerContainer>
-						<LoggerContent />
-					</LoggerContainer>
+				<div className="flex-none w-[400px] flex flex-col justify-center">
+					<div className="w-full h-[50vh]">
+						<Crawler />
+					</div>
 				</div>
 			</div>
 		</main>

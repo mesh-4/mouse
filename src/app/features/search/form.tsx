@@ -5,15 +5,14 @@ import { FiXCircle } from 'react-icons/fi'
 
 import { useStore } from '@/store'
 
-import styles from './form.module.css'
-
 type Props = {
 	url?: string
 }
 
-const SearchForm: React.FC<Props> = ({ url = '' }) => {
-	const inputRef = React.useRef<HTMLInputElement>(null)
+const SearchForm = ({ url = '' }: Props) => {
 	const setUrl = useStore((state) => state.setUrl)
+
+	const inputRef = React.useRef<HTMLInputElement>(null)
 
 	React.useEffect(() => {
 		if (url && inputRef.current) {
@@ -34,24 +33,29 @@ const SearchForm: React.FC<Props> = ({ url = '' }) => {
 	}
 
 	return (
-		<form className={styles.container} onSubmit={handleSubmit}>
-			<div className={styles.field}>
+		<form className="flex w-full" onSubmit={handleSubmit}>
+			<div className="flex-auto mr-2 w-full relative flex">
 				<input
 					ref={inputRef}
-					className={styles.input}
+					className="w-full rounded pl-2 bg-transparent placeholder:text-gray-500 border border-purple-400 hover:border-purple-600 focus:border-purple-600 focus:outline-none"
 					type="url"
 					name="target"
 					placeholder="Enter site url"
 					required
 					pattern="^(https?):\/\/[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})(:\d{1,5})?(\/[^\s]*)?$"
 				/>
-				{url && (
-					<button type="button" className={styles['clear-btn']} aria-label="reset" onClick={handleReset}>
-						<FiXCircle />
-					</button>
-				)}
+				<button
+					type="button"
+					className="absolute aria-hidden:hidden top-1/2 right-4 text-gray-400 bg-transparent -translate-y-1/2 cursor-pointer text-md hover:text-gray-500 transition-colors"
+					aria-hidden={url ? 'false' : 'true'}
+					aria-label="reset"
+					onClick={handleReset}>
+					<FiXCircle />
+				</button>
 			</div>
-			<button type="submit" className="button primary">
+			<button
+				type="submit"
+				className="px-4 cursor-pointer rounded text-white py-2 flex items-center justify-center bg-purple-600 hover:bg-purple-700 disabled:bg-purple-100 disabled:pointer-events-none">
 				Search
 			</button>
 		</form>
