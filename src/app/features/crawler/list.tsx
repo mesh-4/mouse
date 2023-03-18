@@ -10,8 +10,14 @@ const CrawlerListRow = React.memo(({ data, index, style }: ListChildComponentPro
 
 	return (
 		<div className="px-2" style={style}>
-			<div>
-				<div className="text-sm">{item.title}</div>
+			<div className="flex">
+				<div className="flex-none mr-2 w-12 h-[27px] relative">
+					<div
+						className="w-full h-full bg-center bg-no-repeat bg-cover bg-slate-500"
+						style={{ backgroundImage: `url(${item.socialImage})` }}
+					/>
+				</div>
+				<div className="flex-auto text-sm">{item.title}</div>
 			</div>
 		</div>
 	)

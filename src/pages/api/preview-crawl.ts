@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { sleep } from '@/utils'
 import { crawlFetcher } from '@/crawl/fetcher'
 import { getAnchorList, getSiteMeta } from '@/crawl/selectors'
+import type { PreviewItem } from '@/types'
 
 async function handler(request: NextApiRequest, response: NextApiResponse) {
 	if (request.method !== 'POST') {
@@ -28,18 +29,19 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
 		const plainHTML = await siteRes.text()
 		const list = getAnchorList(plainHTML, selector)
 
-		const result = [] as { url: string; title: string; description?: string }[]
+		const result = [] as PreviewItem[]
 
 		for (let i = 0; i < list.length; i++) {
-			await sleep(500)
+			await sleep(100)
 
 			const pathname = list[i]
-			if (pathname.startsWith('http')) {
-				continue
-			}
 			const itemURL = new URL(pathname, sourceUrl.toString())
 			const res = await crawlFetcher(itemURL.toString())
-			if (!res.ok) continue
+			if (!res.ok) {
+				console.log(`fetch with error: ${itemURL.toString()}`)
+				console.log(await res.text())
+				continue
+			}
 
 			const plainHTML = await res.text()
 			const meta = getSiteMeta(plainHTML)
@@ -47,7 +49,7 @@ async function handler(request: NextApiRequest, response: NextApiResponse) {
 			result.push({
 				url: itemURL.toString(),
 				title: meta.title,
-				description: meta.description,
+				socialImage: meta.socialImage,
 			})
 		}
 

@@ -16,11 +16,11 @@ export const getAnchorList = (plainHTML: string, selector: string) => {
 export const getSiteMeta = (plainHTML: string) => {
 	const $ = cheerio.load(plainHTML)
 
-	const title = $('title').text()
-	const description = $('meta[name="description"]').attr('content')
+	const title = $('head > title').text()
+	const socialImage = $('meta[property="og:image"]').attr('content') || $('meta[name="twitter:image"]').attr('content')
 
 	return {
 		title,
-		description,
+		socialImage,
 	}
 }
