@@ -9,6 +9,10 @@ type Store = {
 	setCurrentSelector: (val: string) => void
 	crawledItems: PreviewItem[]
 	setCrawledItems: (val: PreviewItem[]) => void
+
+	logs: string[]
+	setLogs: (val: string[]) => void
+	addLog: (val: string) => void
 }
 
 export const useStore = create<Store>((set) => ({
@@ -18,4 +22,8 @@ export const useStore = create<Store>((set) => ({
 	setCurrentSelector: (val) => set({ currentSelector: val }),
 	crawledItems: [],
 	setCrawledItems: (val) => set({ crawledItems: val }),
+
+	logs: [],
+	setLogs: (val) => set({ logs: val }),
+	addLog: (val) => set((state) => ({ logs: [...state.logs, val] })),
 }))

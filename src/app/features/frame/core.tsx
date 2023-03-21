@@ -4,8 +4,8 @@ import * as React from 'react'
 
 import { useStore } from '@/store'
 import { useProxySite } from '@/hooks'
-import { getNodePath } from '@/utils'
-import { PICKER_STYLES, HOVERED_CLASS, SELECTED_CLASS } from '@/constants'
+import { getLogTxt, getNodePath } from '@/utils'
+import { PICKER_STYLES, AREA_HOVERED_CLASS, HOVERED_CLASS, SELECTED_CLASS } from '@/constants'
 
 var tempWindow: Window | null = null
 
@@ -13,8 +13,9 @@ type Props = {
 	cssSelector?: string
 }
 
-const Frame = ({ cssSelector }: Props) => {
+const Frame = () => {
 	const url = useStore((state) => state.url)
+	const addLog = useStore((state) => state.addLog)
 	const setCurrentSelector = useStore((state) => state.setCurrentSelector)
 
 	const { srcDoc, error, isLoading } = useProxySite(url)
@@ -38,6 +39,7 @@ const Frame = ({ cssSelector }: Props) => {
 		style.innerHTML = PICKER_STYLES
 		tempWindow.document.head.appendChild(style)
 
+		/* anchor event handle
 		const elementsMap: Record<string, Element[]> = {}
 
 		// * inject event listeners to links
@@ -99,12 +101,49 @@ const Frame = ({ cssSelector }: Props) => {
 				})
 			})
 		}
+		*/
 
-		if (cssSelector) {
-			tempWindow.document.querySelectorAll(cssSelector).forEach((ele) => {
-				ele.classList.add(SELECTED_CLASS)
-			})
+		// * detect user scroll posistion and add log
+		const onScroll = () => {
+			const scrollY = tempWindow?.scrollY || 0
+			addLog(getLogTxt('scroll', `${scrollY}`))
 		}
+
+		// * detect user mouse hover
+		let prevHovered: HTMLElement | null = null
+
+		const onHover = (e: MouseEvent) => {
+			if (e.type !== 'mouseover') {
+				return
+			}
+			if (prevHovered) {
+				prevHovered.classList.remove(AREA_HOVERED_CLASS)
+			}
+			;(e.target as HTMLElement).classList.add(AREA_HOVERED_CLASS)
+			prevHovered = e.target as HTMLElement
+		}
+
+		// * get user selected text and add log
+		const onSelection = () => {
+			const selection = tempWindow?.getSelection()
+			if (!selection) {
+				return
+			}
+
+			if (selection.anchorNode?.parentElement) {
+				const wrapperPath = getNodePath(selection.anchorNode.parentElement)
+				addLog(getLogTxt('selection', 'anchor wrapper:' + wrapperPath))
+			}
+
+			const selectedText = selection.toString()
+			if (selectedText) {
+				addLog(getLogTxt('selection', selectedText))
+			}
+		}
+
+		tempWindow.addEventListener('scroll', onScroll)
+		tempWindow.document.addEventListener('mouseover', onHover)
+		tempWindow.document.addEventListener('selectionchange', onSelection)
 	}
 
 	if (!url) {

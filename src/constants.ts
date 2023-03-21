@@ -1,5 +1,6 @@
 export const HOVERED_CLASS = 'mesh-mouse--hovered'
 export const SELECTED_CLASS = 'mesh-mouse--selected'
+export const AREA_HOVERED_CLASS = 'mesh-mouse--area-hovered'
 
 export const PICKER_STYLES = `
 .${HOVERED_CLASS} {
@@ -11,6 +12,11 @@ export const PICKER_STYLES = `
   background-color: rgba(43, 178, 76, 0.16) !important;
   outline: 2px dashed #2bb24c !important;
   outline-offset: -2px !important;
+}
+.${AREA_HOVERED_CLASS} {
+	background-color: rgba(57, 121, 204, 0.16) !important;
+	outline: 2px dashed #3979CC !important;
+	outline-offset: -2px !important;
 }
 `
 

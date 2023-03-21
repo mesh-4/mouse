@@ -37,3 +37,9 @@ export const getNodePath = (node: Element): string => {
 export const sleep = (ms: number) => {
 	return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+type ActionType = 'scroll' | 'selection'
+
+export const getLogTxt = (type: ActionType, msg: string) => {
+	return `[${type}] ${msg}`
+}

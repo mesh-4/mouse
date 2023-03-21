@@ -4,6 +4,8 @@ import Search from './features/search'
 import Frame from './features/frame'
 import Crawler from './features/crawler'
 import Footer from './features/aside/footer'
+import Logger from './features/logger'
+import Tab from './features/tab'
 
 export const metadata: Metadata = {
 	title: 'Mouse',
@@ -20,7 +22,18 @@ export default function Home() {
 				</div>
 				<div className="flex-none w-[400px] flex flex-col justify-center">
 					<div className="w-full h-[50vh]">
-						<Crawler />
+						<Tab
+							tabs={[
+								{
+									label: 'Logger',
+									content: <Logger />,
+								},
+								{
+									label: 'Crawler',
+									content: <Crawler />,
+								},
+							]}
+						/>
 					</div>
 				</div>
 			</div>
